@@ -21,7 +21,6 @@ def get_likers(link):
     r = s.get(link)
 
     rhx_gis = re.findall('rhx_gis":"(.*?)"',r.text)[0]
-    number_of_likes = int(re.findall('userInteractionCount":"(.*?)"',r.text)[0])
 
     while True:
         if end_cursor == "first_attempt":
