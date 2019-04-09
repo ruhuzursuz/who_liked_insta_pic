@@ -27,20 +27,20 @@ def get_likers(link):
             query_variable = '{"shortcode":"' + short_code + '","include_reel":true,"first":50}'
         else:
             query_variable = '{"shortcode":"' + short_code + '","include_reel":true,"first":50,"after":"' + end_cursor + '"}'
-        payload = {"query_hash": query_hash_like,"variables" : query_variable}
+           
         x_instagram_gis = calculate_x_instagram_gis(rhx_gis, query_variable)
         header = {"user-agent": user_agent, "x-instagram-gis": x_instagram_gis}
         s.headers.update(header)
+        
+        payload = {"query_hash": query_hash_like,"variables" : query_variable}
         r = s.get("https://www.instagram.com/graphql/query/?", params = payload)
         json_response = r.json()
         end_cursor = json_response["data"]["shortcode_media"]["edge_liked_by"]["page_info"]["end_cursor"]
         users = json_response["data"]["shortcode_media"]["edge_liked_by"]["edges"]
+        
         for user in users:
             who_liked.append(user["node"]["username"])
         if end_cursor is None:
             break
-
-    print(who_liked)
+            
     return who_liked
-
-get_likers(paste_link_here)
