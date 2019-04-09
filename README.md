@@ -1,2 +1,1 @@
-hmm...
-it doesn't work over 600 liked photos.
+i'm bored
