@@ -1,2 +1,1 @@
-i'm bored
-edit : it's not working now
+it doesnt have any error handling
